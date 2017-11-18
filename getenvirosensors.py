@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from envirophat import light
 from envirophat import weather
@@ -7,6 +7,7 @@ import time
 import argparse
 from pythonosc import osc_message_builder
 from pythonosc import udp_client
+import random # this be here for testing
 
 print("test the code")
 
@@ -30,9 +31,9 @@ def readAndSendValues():
         # print(weather.pressure())
         x, y, z = motion.accelerometer()
         print(x, y, z)
-        client.send_message("/x", int(x))
-        client.send_message("/y", int(y))
-        client.send_message("/z", int(z))
+        client.send_message("/x", x)
+        client.send_message("/y", y)
+        client.send_message("/z", z)
         time.sleep(0.01)
 
 
