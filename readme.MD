@@ -19,6 +19,7 @@
 Description=Start Pd  
 
 [Service]  
+ExecStartPre=/bin/sleep 10
 User=pi  
 WorkingDirectory=/home/pi/envirosound  
 ExecStart=/usr/bin/pd -nogui /home/pi/envirosound/envirosound.pd  
