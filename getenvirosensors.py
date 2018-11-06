@@ -30,7 +30,7 @@ def readAndSendValues():
         # print(weather.temperature())
         # print(weather.pressure())
         x, y, z = motion.accelerometer()
-        print(x, y, z)
+        #print(x, y, z)
         client.send_message("/x", x)
         client.send_message("/y", y)
         client.send_message("/z", z)

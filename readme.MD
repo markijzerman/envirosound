@@ -15,51 +15,51 @@
 
 ### STARTPD.service:
 
-[Unit]
-Description=Start Pd
+[Unit]  
+Description=Start Pd  
 
-[Service]
-User=pi
-WorkingDirectory=/home/pi/envirosound
-ExecStart=/usr/bin/pd -nogui /home/pi/envirosound/envirosound.pd
-Restart=on-failure
+[Service]  
+User=pi  
+WorkingDirectory=/home/pi/envirosound  
+ExecStart=/usr/bin/pd -nogui /home/pi/envirosound/envirosound.pd  
+Restart=on-failure  
 
-[Install]
-WantedBy=multi-user.target
+[Install]  
+WantedBy=multi-user.target  
 
-### STARTPYTHON.service:
+### STARTPYTHON.service:  
 
-[Unit]
-Description=Start Python
-Wants=STARTPD.service
+[Unit]  
+Description=Start Python  
+Wants=STARTPD.service  
 
-[Service]
-User=pi
-WorkingDirectory=/home/pi/envirosound
-ExecStart=/usr/bin/python3 /home/pi/envirosound/getenvirosensors.py
-Restart=on-failure
+[Service]  
+User=pi  
+WorkingDirectory=/home/pi/envirosound  
+ExecStart=/usr/bin/python3 /home/pi/envirosound/getenvirosensors.py  
+Restart=on-failure  
 
-[Install]
-WantedBy=multi-user.target
+[Install]  
+WantedBy=multi-user.target  
 
 ### Make sure both startup scripts are executable
 
-sudo chmod +x STARTPD.service
-sudo chmod +x STARTPYTHON.service
+sudo chmod +x STARTPD.service  
+sudo chmod +x STARTPYTHON.service  
 
 ### make sure both scripts are enabled
 
-sudo systemctl enable STARTPD.service
-sudo systemctl enable STARTPYTHON.service
+sudo systemctl enable STARTPD.service  
+sudo systemctl enable STARTPYTHON.service  
 
-### start to test 'em
-sudo systemctl start STARTPD.service
-sudo systemctl start STARTPYTHON.service
+### start to test 'em  
+sudo systemctl start STARTPD.service  
+sudo systemctl start STARTPYTHON.service  
 
-### check logs if it doesnt work
+### check logs if it doesnt work  
 
-cat /var/log/syslog
+systemctl status STARTPD
 
-### to stop and tweak them
-sudo systemctl stop STARTPD.service
-sudo systemctl stop STARTPYTHON.service
+### to stop and tweak them  
+sudo systemctl stop STARTPD.service  
+sudo systemctl stop STARTPYTHON.service  

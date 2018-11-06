@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/home/pi/envirosound/getenvirosensors.py", line 8, in <module>
+    from pythonosc import osc_message_builder
+ImportError: No module named 'pythonosc'
