@@ -1,5 +1,4 @@
-## Reads out the sensors from the Pimoroni EnviropHAT and sonifies these 
-## in Puredata
+# Sensors from the EnviropHAT sonified in PureData
 
 * Needs Raspberry Pi W with Jessie or Stretch
 * Do the OTG thing: https://gist.github.com/gbaman/975e2db164b3ca2b51ae11e45e8fd40a
@@ -14,7 +13,7 @@
 * run it with python3
 * This should work.
 
-# STARTPD.service:
+### STARTPD.service:
 
 [Unit]
 Description=Start Pd
@@ -28,7 +27,7 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 
-# STARTPYTHON.service:
+### STARTPYTHON.service:
 
 [Unit]
 Description=Start Python
@@ -43,24 +42,24 @@ Restart=on-failure
 [Install]
 WantedBy=multi-user.target
 
-# Make sure both startup scripts are executable
+### Make sure both startup scripts are executable
 
 sudo chmod +x STARTPD.service
 sudo chmod +x STARTPYTHON.service
 
-# make sure both scripts are enabled
+### make sure both scripts are enabled
 
 sudo systemctl enable STARTPD.service
 sudo systemctl enable STARTPYTHON.service
 
-# start to test 'em
+### start to test 'em
 sudo systemctl start STARTPD.service
 sudo systemctl start STARTPYTHON.service
 
-# check logs if it doesnt work
+### check logs if it doesnt work
 
 cat /var/log/syslog
 
-# to stop and tweak them
+### to stop and tweak them
 sudo systemctl stop STARTPD.service
 sudo systemctl stop STARTPYTHON.service
